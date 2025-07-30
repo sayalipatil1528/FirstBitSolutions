@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int a=45,b=2,c,op='*';
+	if(op=='+')
+	{
+		c=a+b;
+		printf("Addition=%d",c);
+	}
+	else
+	{
+		if(op=='-')
+		{
+			c=a-b;
+			printf("Sub=%d",c);
+		}
+		else
+		{
+			if(op=='*')
+			{
+				c=a*b;
+				printf("Mult=%d",c);
+			}
+			else
+			{
+				if(op=='/')
+				{
+					c=a/b;
+					printf("Div=%d",c);
+				}
+				else
+				{
+					c=a%b;
+					printf("Mod=%d",c);
+				}
+				
+			}
+		}
+	}
+}

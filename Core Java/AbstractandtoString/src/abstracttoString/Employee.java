@@ -1,0 +1,306 @@
+package abstracttoString;
+
+abstract class Employee {
+	int id;
+	String name;
+	double salary;
+	
+	Employee()//default
+	{
+		System.out.println("Employee default constructor ");
+		id=101;
+		name="Sonali";
+		salary=30000;
+	}
+
+	Employee(int id, String name, double salary)//Parameterized 
+	{
+		System.out.println("Employee Parameterized constructor ");
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+
+	int getId() {
+		return id;
+	}
+
+	void setId(int id) {
+		this.id = id;
+	}
+
+	String getName() {
+		return name;
+	}
+
+	void setName(String name) {
+		this.name = name;
+	}
+
+	double getSalary() {
+		return salary;
+	}
+
+	void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	abstract double calsal();
+	
+//	void display()
+//	{
+//		System.out.println("\nId is : "+this.id);
+//		System.out.println("Name is : "+this.name);
+//		System.out.println("Salary is : "+this.salary);
+//	}
+	
+	public String toString()
+	{
+		return "\nId : "+this.id+"\nName : "+this.name+"\nSalary : "+this.salary;
+
+	}
+	
+	
+}//Employee class ends here
+
+class SalesManager extends Employee
+{
+	
+	double incentive;
+	double target;
+	
+	SalesManager()//default
+	{
+		
+		super();
+		System.out.println("SalesManager default constructor ");
+
+		incentive=2000;
+		target=23;
+	}
+
+	SalesManager(int id,String name,double salary,double incentive, double target) //parameterized
+	{
+		
+		super(id,name,salary);
+		System.out.println("SalesManager parameterized constructor ");
+		this.incentive = incentive;
+		this.target = target;
+		
+	}
+	
+	
+	
+	double getIncentive() {
+		return incentive;
+	}
+
+	void setIncentive(double incentive) {
+		this.incentive = incentive;
+	}
+
+	double getTarget() {
+		return target;
+	}
+
+	void setTarget(double target) {
+		this.target = target;
+	}
+	
+	
+	double calsal()
+	{
+		return salary+incentive;
+	}
+//
+//	void display()
+//	{
+//		super.display();
+//		System.out.println("Incentive is : "+this.incentive);
+//		System.out.println("Target is : "+this.target);
+//	}
+	
+	
+	public String toString()
+	{
+		//return "\nId : "+this.id+"\nName : "+this.name+"\nSalary : "+this.salary;
+		return super.toString()+"\nIncentive : "+this.incentive+"\nTarget : "+this.target;
+
+	}
+	
+	
+}//SalesManager ends here
+
+class AreaSalesManager extends SalesManager
+{
+	String areaname;
+	
+	
+	AreaSalesManager() 
+	{
+		super();
+		System.out.println("AreaSalesManager default constructor ");
+		areaname="Pune";
+	}
+
+
+	AreaSalesManager(int id, String name, double salary, double incentive, double target, String areaname)
+	{
+		super(id,name,salary,incentive,target);
+		System.out.println("AreaSalesManager parameterized constructor ");
+		this.areaname = areaname;
+	}
+
+
+	String getAreaname() {
+		return areaname;
+	}
+
+
+	void setAreaname(String areaname) {
+		this.areaname = areaname;
+	}
+	
+//	void display()
+//	{
+//		super.display();
+//		System.out.println("Area name is : "+this.areaname);
+//	}
+//	
+	
+	public String toString()
+	{
+		return super.toString()+"\nArea Name : "+this.areaname;
+
+	}
+	
+	
+}//AreaSalesManager class ends here
+
+class Admin extends Employee
+{
+	int id;
+	String name;
+	double salary;
+	double allowance;
+	
+	Admin()//default
+	{
+		super();
+		allowance=2000;
+		System.out.println("Admin default constructor ");
+	}
+
+	Admin(int id, String name, double salary, double allowance) 
+	{
+		super(id,name,salary);
+		this.allowance = allowance;
+		System.out.println("Admin parameterized constructor ");
+	}
+
+	double getAllowance() {
+		return allowance;
+	}
+
+	void setAllowance(double allowance) {
+		this.allowance = allowance;
+	}
+	
+	
+	double calsal()
+	{
+		return salary+allowance;
+	}
+	
+//	void display()
+//	{
+//		super.display();
+//		System.out.println("Allowance is : "+this.allowance);
+//	}
+	
+	public String toString()
+	{
+		return super.toString()+"\nAllowance : "+this.allowance;
+
+	}
+	
+}//Admin class ends here
+
+class HR extends Employee
+{
+	
+	double commision;
+	
+	HR()//default
+	{
+		super();
+		commision=3000;
+		System.out.println("HR default constructor ");
+	}
+
+	HR(int id, String name, double salary, double commision) 
+	{
+		super(id,name,salary);
+		this.commision = commision;
+		System.out.println("HR parameterized constructor ");
+	}
+
+	double getCommision() {
+		return commision;
+	}
+
+	void setCommision(double commision) {
+		this.commision = commision;
+	}
+	
+	
+	double calsal()
+	{
+		return salary+commision;
+	}
+	
+	
+//	void display()
+//	{
+//		super.display();
+//		System.out.println("Commision is : "+this.commision);
+//	}
+//	
+	
+	public String toString()
+	{
+		return super.toString()+"\nCommision : "+this.commision;
+
+	}
+	
+}//HR class ends here
+
+
+class TestEmployee
+{
+	public static void main(String[]args)
+	{
+		Employee e1;//generic reference
+		
+		//e1=new Employee(107,"Sachin",20000);
+		//System.out.println("\nEmployee Salary : "+e1.calsal());
+		//e1.display();
+	
+		e1=new SalesManager(102,"Rahul",25000,500,20);//upcasting
+		System.out.println("\nSalesManager Salary : "+e1.calsal());
+		//e1.display();
+		System.out.println(e1.toString());
+		
+		e1=new Admin(101,"Sourav",21000,200);//upcasting
+		System.out.println("\nAdmin Salary : "+e1.calsal());
+		//e1.display();
+		System.out.println(e1.toString());
+	
+		
+		e1=new HR(103,"Virat",23000,200);//upcasting
+		System.out.println("\nHR Salary : "+e1.calsal());
+		//e1.display();
+		System.out.println(e1.toString());
+	}
+}
+

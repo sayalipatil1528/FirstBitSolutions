@@ -1,0 +1,29 @@
+create procedure curDemo(d int)
+begin
+
+declare id,sal int;
+declare finish int default 0;
+
+declare cur1 cursor for select eid,salary from employee where d_id=d;
+
+declare continue handler for not found set finish=1;
+
+open cur1;
+
+myloop:loop
+	fetch cur1 into id,sal;
+	if(finissh=1)then
+	      leave myloop;
+	end if;
+	
+	if(sal>=25000)then
+	      update employee set salary=salary*1.1 where eid=id;
+	else
+	      update employee set salary=salary*1.2 where eid=id;
+	end if;
+
+end loop myloop;
+
+close cur1;
+
+end

@@ -1,0 +1,10 @@
+create procedure addition(a int,b int ,out c int)
+begin
+	set c=a+b;
+end#
+
+
+create procedure findcube(inout x int)
+begin
+	set x=x*x*x;
+end#

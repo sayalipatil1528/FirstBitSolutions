@@ -1,0 +1,39 @@
+create trigger update_tr after update on product
+for each row
+begin
+	insert into history values
+	(old.pid,old.price,curdate());
+end
+
+
+
+
+create trigger update_tr1 after update on account
+for each row
+begin
+	declare amt int;
+	if(old.balance>new.balance)then
+	-- debit
+	set amt=old.balance-new.balance;
+	insert into report values(old.accno,amt,"Debit",curdate());
+	
+	else
+	-- credit
+	set amt=new.balance-old.balance;
+	insert into report values(old.accno,amt,"Credit",curdate());
+	
+	end if;
+end
+
+
+
+
+
+create trigger emp_tr before delete on employee
+for each row
+begin
+	if(old.d_id=3)then
+	signal sqlstate '45000' set
+	message_text="Cannot delete employee working in dept 3";
+	end if;
+end
